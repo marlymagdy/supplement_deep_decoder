@@ -7,7 +7,7 @@ import skimage.color as color
 from skimage.restoration import (denoise_wavelet, estimate_sigma)
 from skimage import data, img_as_float
 from skimage.util import random_noise
-from skimage.measure import compare_psnr
+from skimage.metrics import peak_signal_noise_ratio as compare_psnr
 from include import * 
 
 def _wavelet_threshold(image, wavelet, ncoeff = None, threshold=None, mode='soft', wavelet_levels=None):
