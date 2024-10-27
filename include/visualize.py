@@ -3,7 +3,7 @@ from torch.autograd import Variable
 import torch
 import torch.optim
 import numpy as np
-from collections import Iterable
+from collections.abc import Iterable
 
 
 dtype = torch.cuda.FloatTensor
