@@ -78,7 +78,7 @@ def fit(net,
         print("optimize with LBFGS", LR)
         optimizer = torch.optim.LBFGS(p, lr=LR)
 
-    mse = torch.nn.MSELoss() #.type(dtype) 
+    mse = torch.nn.MSELoss() #.type(dtype)
     noise_energy = mse(img_noisy_var, img_clean_var)
 
     if find_best:
@@ -97,6 +97,10 @@ def fit(net,
         def closure():
             optimizer.zero_grad()
             out = net(net_input.type(dtype))
+
+            print("out shape:", out.shape) ###################
+            print("mask_var shape:", mask_var.shape)
+            print("img_noisy_var shape:", img_noisy_var.shape)       
 
             # training loss 
             if mask_var is not None:
