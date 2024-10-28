@@ -39,6 +39,22 @@ def load_and_crop(imgname,target_width=512,target_height=512):
 	bottom = (height + target_height)/2
 	
 	return img.crop((left, top, right, bottom))
+	
+def crop_image(img, d=32):
+    '''Make dimensions divisible by d'''
+
+    new_size = (img.size[0] - img.size[0] % d, 
+                img.size[1] - img.size[1] % d)
+
+    bbox = [
+            int((img.size[0] - new_size[0])/2), 
+            int((img.size[1] - new_size[1])/2),
+            int((img.size[0] + new_size[0])/2),
+            int((img.size[1] + new_size[1])/2),
+    ]
+
+    img_cropped = img.crop(bbox)
+    return img_cropped
 
 def save_np_img(img,filename):
     if(img.shape[0] == 1):
