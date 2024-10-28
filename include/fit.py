@@ -98,9 +98,9 @@ def fit(net,
             optimizer.zero_grad()
             out = net(net_input.type(dtype))
 
-            print("out shape:", out.shape) ###################
-            print("mask_var shape:", mask_var.shape)
-            print("img_noisy_var shape:", img_noisy_var.shape)       
+            #print("out shape:", out.shape) ###################
+            #print("mask_var shape:", mask_var.shape)
+            #print("img_noisy_var shape:", img_noisy_var.shape)       
 
             # training loss 
             if mask_var is not None:
