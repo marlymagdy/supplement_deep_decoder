@@ -43,6 +43,7 @@ def fit(net,
         net_input_gen = "random",
         find_best=False,
         weight_decay=0,
+        PLOT=True
        ):
 
     if net_input is not None:
