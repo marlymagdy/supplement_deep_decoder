@@ -113,7 +113,8 @@ def fit(net,
         
             loss.backward()
             mse_wrt_noisy[i] = loss.data.cpu().numpy()
-            print ('Iteration %05d    Loss %f' % (i, loss.data, '\r', end='')
+            print('Iteration %05d    Loss %f' % (i, loss.data), '\r', end='')
+
                    
             if  PLOT and i % 100 == 0:
                 out_np = var_to_np(out)
