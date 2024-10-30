@@ -6,6 +6,7 @@ import numpy as np
 from scipy.linalg import hadamard
 
 from .helpers import *
+from .visualize import *
 
 dtype = torch.cuda.FloatTensor
 #dtype = torch.FloatTensor
@@ -116,7 +117,7 @@ def fit(net,
                    
             if  PLOT and i % 100 == 0:
                 out_np = var_to_np(out)
-                plot_image_grid([np.clip(out_np, 0, 1)], factor=figsize, nrow=1)
+                plot_image_grid2([np.clip(out_np, 0, 1)], factor=figsize, nrow=1)
             
             # the actual loss 
             true_loss = mse(Variable(out.data, requires_grad=False), img_clean_var)
