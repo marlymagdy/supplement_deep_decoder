@@ -112,7 +112,11 @@ def fit(net,
         
             loss.backward()
             mse_wrt_noisy[i] = loss.data.cpu().numpy()
-            
+            print ('Iteration %05d    Loss %f' % (i, loss.data, '\r', end='')
+                   
+            if  PLOT and i % 100 == 0:
+                out_np = torch_to_np(out)
+                plot_image_grid([np.clip(out_np, 0, 1)], factor=figsize, nrow=1)
             
             # the actual loss 
             true_loss = mse(Variable(out.data, requires_grad=False), img_clean_var)
