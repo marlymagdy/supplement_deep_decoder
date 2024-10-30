@@ -115,7 +115,7 @@ def fit(net,
             print ('Iteration %05d    Loss %f' % (i, loss.data, '\r', end='')
                    
             if  PLOT and i % 100 == 0:
-                out_np = torch_to_np(out)
+                out_np = var_to_np(out)
                 plot_image_grid([np.clip(out_np, 0, 1)], factor=figsize, nrow=1)
             
             # the actual loss 
