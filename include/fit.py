@@ -43,7 +43,7 @@ def fit(net,
         net_input_gen = "random",
         find_best=False,
         weight_decay=0,
-        PLOT=True
+        PLOT=True,
         warmup_iters=1000,     # New parameter for warm-up iterations
         initial_lr=0.001
        ):
