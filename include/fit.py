@@ -44,6 +44,8 @@ def fit(net,
         find_best=False,
         weight_decay=0,
         PLOT=True
+        warmup_iters=1000,     # New parameter for warm-up iterations
+        initial_lr=0.001
        ):
 
     if net_input is not None:
@@ -88,8 +90,14 @@ def fit(net,
         best_mse = 1000000.0
 
     for i in range(num_iter):
-        
-        if lr_decay_epoch is not 0:
+               
+        # Learning rate adjustment for warm-up phase       
+        if i < warmup_iters:
+            warmup_lr = initial_lr + (LR - initial_lr) * (i / warmup_iters)
+            for param_group in optimizer.param_groups:
+                param_group['lr'] = warmup_lr
+                       
+        elif lr_decay_epoch is not 0:
             optimizer = exp_lr_scheduler(optimizer, i, init_lr=LR, lr_decay_epoch=lr_decay_epoch)
         if reg_noise_std > 0:
             if i % reg_noise_decayevery == 0:
