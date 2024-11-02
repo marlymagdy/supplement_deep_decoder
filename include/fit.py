@@ -130,7 +130,8 @@ def fit(net,
                 #plot_image_grid2([np.clip(out_np, 0, 1)], factor=figsize, nrow=1)
                 plt.figure(figsize=(5,5))  # Set plot size
                 plt.imshow(out_np.transpose(1, 2, 0))  # Adjust axis if needed
-                plt.title(f"Iteration {i:05d}    Loss {loss:.6f}  ")  # Add title with loss info
+                current_lr = optimizer.param_groups[0]['lr']
+                plt.title(f"Iteration {i:05d}    Loss {loss:.6f}   LR {current_lr:.6f} ")  # Add title with loss info
                 plt.show()  # Show plot      
             
             # the actual loss 
