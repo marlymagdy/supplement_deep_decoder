@@ -125,7 +125,7 @@ def fit(net,
             print('Iteration %05d    Loss %f' % (i, loss.data), '\r', end='')
 
                    
-            if  PLOT and i % 100 == 0:
+            if  PLOT and i % 2000 == 0:
                 out_np = var_to_np(out)
                 #plot_image_grid2([np.clip(out_np, 0, 1)], factor=figsize, nrow=1)
                 plt.figure(figsize=(5,5))  # Set plot size
